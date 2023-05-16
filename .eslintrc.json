@@ -1,0 +1,29 @@
+{
+    "extends": ["eslint:recommended"],
+    "plugins": ["regexp"],
+    "rules": {
+        "regexp/match-regex": [
+            "error",
+            {
+              "regex": "^cfe",
+              "message": "El nombre del componente debe comenzar con el prefijo 'cfe'."
+            }
+          ],  
+      "semi": ["error", "always"],
+      "quotes": ["error", "double"],
+      "no-implicit-globals": "error",
+      "eqeqeq": "error",
+      "no-unused-vars": "error",
+      "camelcase": ["error", { "properties": "always" }],
+      "new-cap": "error",
+      "keyword-spacing": "error",
+      "space-infix-ops": "error",
+      "prefer-const": "error",
+      "prefer-template": "error",
+      "max-nested-callbacks": ["error", 3],
+      "prefer-array-callbacks": "error"
+
+
+    }
+  }
+  
