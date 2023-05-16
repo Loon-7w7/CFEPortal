@@ -1,0 +1,14 @@
+:root {
+    --color-primario: #409ece;
+    --color-secundario: #1b3039;
+    --color-terciario:  #f0faff;
+    --color-fondo: #abb8c3;
+    --color-white: #fff;
+    --color-white-secundario: #ccc;
+    --color-black: #000;
+    --color-grey: #555;
+    --color-hover: #ffcc00;
+    --color-success: #43a147;
+    --color-success-dark: #3f7941;
+    --color-delete: rgb(240, 102, 102);
+  }
