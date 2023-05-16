@@ -6,17 +6,17 @@
                 <p>Agregue los datos que se solicitan para llenar la tabla.</p>
             </div>
 
-            <form class="FormCalc">
-                <table>
+            <form class="FormCalc"  >
+                <table >
                     <br>
                     <tr>
                         <td><label for="Number">Número:</label></td>
-                        <td><input id="Number" type="number" name="number" [(ngModel)]="calcInfo.number" required></td>
+                        <td><input id="Number" type="number" name="number" [(ngModel)]="calcInfo.number" required [disabled]="isFormDisabled"></td>
                     </tr>
                     <tr>
                         <td><label for="Year">Año: </label></td>
                         <td>
-                            <select id="Year" name="Year" [(ngModel)]="calcInfo.year">
+                            <select id="Year" name="Year" [(ngModel)]="calcInfo.year" [disabled]="isFormDisabled">
                                 <option disabled selected="">Seleccione el año</option>
                                 <option>2023</option>
                                 <option>2024</option>
@@ -31,19 +31,19 @@
                     </tr>
                     <tr>
                         <td><label for="Name">Nombre: </label></td>
-                        <td><input id="Name" name="name" type="text" [(ngModel)]="calcInfo.name"></td>
+                        <td><input id="Name" name="name" type="text" [(ngModel)]="calcInfo.name" [disabled]="isFormDisabled"></td>
                     </tr>
                     <tr>
                         <td><label for="description">Descripción: </label></td>
                         <td><textarea id="description" rows="5" cols="21" [(ngModel)]="calcInfo.description"
-                                name="descripcion"
+                                name="descripcion" [disabled]="isFormDisabled"
                                 placeholder="Escriba su descripción aquí."></textarea></td>
                     </tr>
                     <tr>
                         <td><label for="Voltage">Voltaje: </label></td>
                         <td>
-                            <select id="Voltage" [(ngModel)]="calcInfo.voltage" name="voltage">
-                                <option disabled selected="">Seleccione el voltaje</option>
+                            <select id="Voltage" [(ngModel)]="calcInfo.voltage" name="voltage" [disabled]="isFormDisabled">
+                                <option disabled selected="" [value]="null">Seleccione el voltaje</option>
                                 <option>13</option>
                                 <option>33</option>
                             </select>
@@ -52,7 +52,7 @@
                     <tr>
                         <td><label for="SemiIsolsted">Semiaislado: </label></td>
                         <td>
-                            <select id="SemiIsolsted" [(ngModel)]="calcInfo.semiisolated" name="semiisolated">
+                            <select id="SemiIsolsted" [(ngModel)]="calcInfo.semiisolated" name="semiisolated" [disabled]="isFormDisabled">
                                 <option disabled selected="" [value]="null">Seleccione una opción</option>
                                 <option [value]="true">Si</option>
                                 <option [value]="false">No</option>
@@ -62,7 +62,7 @@
                     <tr>
                         <td><label for="Heavy">Pesado: </label></td>
                         <td>
-                            <select id="Heavy" [(ngModel)]="calcInfo.heavy" name="heavy">
+                            <select id="Heavy" [(ngModel)]="calcInfo.heavy" name="heavy" [disabled]="isFormDisabled">
                                 <option disabled selected="" [value]="null">Seleccione una opción</option>
                                 <option [value]="true">Si</option>
                                 <option [value]="false">No</option>
@@ -73,7 +73,7 @@
                 </table>
                 <div class="AddDataButton">
                     <input type="button" id="botonAgregar" name="add" value="Agregar datos" (click)="onSubmit()"
-                        class="">
+                        class="" [disabled]="isFormDisabled">
                 </div>
             </form>
             
