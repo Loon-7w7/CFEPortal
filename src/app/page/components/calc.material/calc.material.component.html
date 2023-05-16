@@ -6,17 +6,17 @@
                 <p>Agregue los datos que se solicitan para llenar la tabla.</p>
             </div>
 
-            <form method="POST" name="sample" class="FormCalc">
+            <form class="FormCalc">
                 <table>
                     <br>
                     <tr>
                         <td><label for="Number">Número:</label></td>
-                        <td><input id="Number" type="number"></td>
+                        <td><input id="Number" type="number" name="number" [(ngModel)]="calcInfo.number" required></td>
                     </tr>
                     <tr>
                         <td><label for="Year">Año: </label></td>
                         <td>
-                            <select id="Year">
+                            <select id="Year" name="Year" [(ngModel)]="calcInfo.year">
                                 <option disabled selected="">Seleccione el año</option>
                                 <option>2023</option>
                                 <option>2024</option>
@@ -31,17 +31,18 @@
                     </tr>
                     <tr>
                         <td><label for="Name">Nombre: </label></td>
-                        <td><input id="Name" type="text"></td>
+                        <td><input id="Name" name="name" type="text" [(ngModel)]="calcInfo.name"></td>
                     </tr>
                     <tr>
                         <td><label for="description">Descripción: </label></td>
-                        <td><textarea id="description" rows="5" cols="21"
+                        <td><textarea id="description" rows="5" cols="21" [(ngModel)]="calcInfo.description"
+                                name="descripcion"
                                 placeholder="Escriba su descripción aquí."></textarea></td>
                     </tr>
                     <tr>
                         <td><label for="Voltage">Voltaje: </label></td>
                         <td>
-                            <select id="Voltage">
+                            <select id="Voltage" [(ngModel)]="calcInfo.voltage" name="voltage">
                                 <option disabled selected="">Seleccione el voltaje</option>
                                 <option>13</option>
                                 <option>33</option>
@@ -51,26 +52,46 @@
                     <tr>
                         <td><label for="SemiIsolsted">Semiaislado: </label></td>
                         <td>
-                            <select id="SemiIsolsted">
-                                <option disabled selected="">Seleccione una opción</option>
-                                <option>Si</option>
-                                <option>No</option>
+                            <select id="SemiIsolsted" [(ngModel)]="calcInfo.semiisolated" name="semiisolated">
+                                <option disabled selected="" [value]="null">Seleccione una opción</option>
+                                <option [value]="true">Si</option>
+                                <option [value]="false">No</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td><label for="Heavy">Pesado: </label></td>
                         <td>
-                            <select id="Heavy">
-                                <option disabled selected="">Seleccione una opción</option>
-                                <option>Si</option>
-                                <option>No</option>
+                            <select id="Heavy" [(ngModel)]="calcInfo.heavy" name="heavy">
+                                <option disabled selected="" [value]="null">Seleccione una opción</option>
+                                <option [value]="true">Si</option>
+                                <option [value]="false">No</option>
                             </select>
 
                         </td>
                     </tr>
                 </table>
+                <div class="AddDataButton">
+                    <input type="button" id="botonAgregar" name="add" value="Agregar datos" (click)="onSubmit()"
+                        class="">
+                </div>
             </form>
+            
+            <br>
+
+            <!-- Aqui se selccionan los dispositivos -->
+            <label>Dispositivos: </label><select name="selecDispo" id="selectDevice"
+                onchange="addDevice(this.value)"><br>
+                <option disabled selected="" hidden>Seleccione un Dispositivo</option>
+                <optgroup label="Media Tension">
+                    <option>Primero</option>
+                    <option>Segundo</option>
+                    <option>Tercero</option>
+                <optgroup label="Baja Tensión">
+                    <option>Primero2</option>
+                    <option>Segundo2</option>
+                    <option>Tercero2</option>
+            </select>
         </div>
     </div>
     <div class="SectionR">
@@ -82,7 +103,7 @@
             </div>
             <br>
             <!-- Aqui se crea la tabla principal -->
-            <table id="tbl" class="TableData">
+            <table id="tbl" class="TableData" *ngIf="showTableData">
 
                 <thead>
                     <tr>
@@ -90,11 +111,38 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td >Numero</td>
+                        <td >{{calcInfo.number}}</td>
+                    </tr>
+                    <tr>
+                        <td >Nombre</td>
+                        <td >{{calcInfo.name}}</td>
+                    </tr>
+                    <tr>
+                        <td >Descripción</td>
+                        <td >{{calcInfo.description}}</td>
+                    </tr>
+                    <tr>
+                        <td >Año</td>
+                        <td >{{calcInfo.year}}</td>
+                    </tr>
+                    <tr>
+                        <td >Voltaje</td>
+                        <td >{{calcInfo.voltage}}</td>
+                    </tr>
+                    <tr>
+                        <td >Semiaislado</td>
+                        <td >{{calcInfo.semiisolated}}</td>
+                    </tr>
+                    <tr>
+                        <td >Pesado</td>
+                        <td >{{calcInfo.heavy}}</td>
+                    </tr>
                 </tbody>
-            </table>
-            <br>
-            <input type="button" name="button" id="excel_btn" value="Convertir a Excel"
+                <input type="button" name="button" id="excel_btn" value="Convertir a Excel"
                 onclick="htmlTableToExcel('xlsx')" class="">
+            </table>
         </div>
     </div>
 </div>
