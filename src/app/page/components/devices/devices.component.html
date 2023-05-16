@@ -1,1 +1,136 @@
-<p>devices works!</p>
+<div class="bodyContent">
+    <div class="SectionL">
+        <div>
+        <div class="Tittle">
+            <h4>Información</h4>
+            <p>En este apartado se pueden ingresar, agregar y editar los dispositivos (estructuras) y sus
+                respectivos
+                materiales.</p>
+        </div>
+
+        <div>
+            <input class="successButton" type="button" id="botonAgregar" name="add" value="Agregar dispositivo"
+                onclick="addData();">
+        </div>
+
+        <div class="Tittle">
+            <h4>Información</h4>
+            <p>Seleccione los parámetros correspondientes al dispositivo y luego presione aceptar.</p>
+        </div>
+        <form action="">
+            <table>
+                <tr>
+                    <td>
+                        <label>Voltaje: </label>
+                    </td>
+                    <td>
+                        <select name="voltaje" style="width: 206px;">
+                            <option disabled selected="">Seleccione el voltaje</option>
+                            <option>13</option>
+                            <option>33</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Semiaislado: </label>
+                    </td>
+                    <td>
+                        <select name="semiAis">
+                            <option disabled selected="">Seleccione una opción</option>
+                            <option>Si</option>
+                            <option>No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Pesado: </label>
+                    </td>
+                    <td>
+                        <select name="pesado">
+                            <option disabled selected="">Seleccione una opción</option>
+                            <option>Si</option>
+                            <option>No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="botonAgregar" name="add" value="Aceptar" onclick="addData();"
+                            class="successButton"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Nombre del dispositivo: </label>
+                    </td>
+                    <td><input id="nombre" type="text" name="nombre"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Material: </label>
+                    </td>
+                    <td><input id="nombre" type="text" name="nombre"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="botonAgregar" name="add" value="Agregar otro material"
+                            onclick="addData();" class="successButton"></td>
+                    <td><input class="successButton" type="button" value="Finalizar"></td>
+                </tr>
+
+            </table>
+
+
+        </form>
+    </div>
+    </div>
+    <div class="SectionR">
+        <div>
+        <form class="search">
+            <input class="" type="search" placeholder="Buscar...">
+            <input type="button" class="searchButton" value="Buscar" type="submit">
+        </form>
+        <br>
+
+
+        <!-- Aqui se crea la tabla principal -->
+        <table id="tbl" class="TableData">
+            <thead>
+                <tr>
+                    <th colspan="2">No.</th>
+                    <th colspan="2">Nombre del dispositivo</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="2">Dispositivo 1</td>
+                    <td colspan="2"><input type="button" class="Deletebutton" value="Eliminar"> <input type="button" value="Editar" class="UpdateButton"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">2</td>
+                    <td colspan="2">Dispositivo 2</td>
+                    <td colspan="2"><input type="button" class="Deletebutton" value="Eliminar"> <input type="button" value="Editar" class="UpdateButton"></td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <br>
+        <div class="containerPagination">
+
+        <nav>
+            <ul class="">
+                <li class="">
+                    <a class="NextBack" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                </li>
+                <li ><a class="" href="#">1</a></li>
+                <li ><a class="" href="#">2</a></li>
+                <li ><a class="" href="#">3</a></li>
+                <li >
+                    <a class="NextBack" href="#">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+</div>
+</div>

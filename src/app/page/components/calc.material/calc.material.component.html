@@ -1,1 +1,100 @@
-<p>calc.material works!</p>
+<div class="bodyContainer">
+    <div class="SectionL">
+        <div class="formSection">
+            <div class="Tittle">
+                <h4>Información</h4>
+                <p>Agregue los datos que se solicitan para llenar la tabla.</p>
+            </div>
+
+            <form method="POST" name="sample" class="FormCalc">
+                <table>
+                    <br>
+                    <tr>
+                        <td><label for="Number">Número:</label></td>
+                        <td><input id="Number" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Year">Año: </label></td>
+                        <td>
+                            <select id="Year">
+                                <option disabled selected="">Seleccione el año</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                                <option>2025</option>
+                                <option>2026</option>
+                                <option>2027</option>
+                                <option>2028</option>
+                                <option>2029</option>
+                                <option>2030</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Name">Nombre: </label></td>
+                        <td><input id="Name" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="description">Descripción: </label></td>
+                        <td><textarea id="description" rows="5" cols="21"
+                                placeholder="Escriba su descripción aquí."></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Voltage">Voltaje: </label></td>
+                        <td>
+                            <select id="Voltage">
+                                <option disabled selected="">Seleccione el voltaje</option>
+                                <option>13</option>
+                                <option>33</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="SemiIsolsted">Semiaislado: </label></td>
+                        <td>
+                            <select id="SemiIsolsted">
+                                <option disabled selected="">Seleccione una opción</option>
+                                <option>Si</option>
+                                <option>No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Heavy">Pesado: </label></td>
+                        <td>
+                            <select id="Heavy">
+                                <option disabled selected="">Seleccione una opción</option>
+                                <option>Si</option>
+                                <option>No</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="SectionR">
+        <div>
+            <div class="Tittle" style="width: 500px;">
+                <h4>Información</h4>
+                <p>La informacion agragada se verá reflejada en la siguiente tabla, los datos pueden ser editados o
+                    eliminados.</p>
+            </div>
+            <br>
+            <!-- Aqui se crea la tabla principal -->
+            <table id="tbl" class="TableData">
+
+                <thead>
+                    <tr>
+                        <th colspan="2">Cálculo de material.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <br>
+            <input type="button" name="button" id="excel_btn" value="Convertir a Excel"
+                onclick="htmlTableToExcel('xlsx')" class="">
+        </div>
+    </div>
+</div>

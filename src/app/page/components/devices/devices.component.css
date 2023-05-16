@@ -1,0 +1,140 @@
+.Tittle
+{
+    width: 500px;
+    margin-right: 40px;
+    padding: 10px;
+    background-color: var(--color-terciario);
+    height: auto;
+    border-left: 5px solid var(--color-primario);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.Tittle h4
+{
+    font-weight: bold;
+    color: var(--color-black);
+}
+.bodyContent
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;  
+}
+.SectionL
+{
+    padding: 15px;
+    width: 45%;
+    height: 100%;
+    border-right: 2px solid var(--color-secundario);
+    display: flex;
+    justify-content: flex-end;
+}
+.SectionR
+{
+    padding-top: 70px;
+    padding-left: 70px;
+    width: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+/*diseño de tabla*/
+.TableData {
+    border-collapse: collapse;
+    width: 100%;
+
+  }
+  
+  .TableData td,
+  .TableData th {
+    border: 1px solid var(--color-secundario);
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .TableData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--color-secundario);
+    color: var(--color-white-secundario);
+  }
+  
+  .TableData tr {
+    background-color: #ecf2ff;
+  }
+  .search
+  {
+    display: flex;
+    justify-content: center;
+  }
+  .searchButton
+  {
+    margin: 0;
+    margin-left: 10px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: 0;
+    border-radius: 10%;
+    color: var(--color-white);
+    background-color: var(--color-primario) !important;
+  }
+  /*Paginacion*/
+  .containerPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .containerPagination nav {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 0;
+  }
+  
+  .containerPagination nav ul {
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    list-style: none;
+    background-color: var(--color-white);
+  }
+  
+  .containerPagination nav li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .containerPagination nav a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #555;
+    background-color: var(--color-white-secundario);
+  }
+  
+  .containerPagination nav a:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .containerPagination nav a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+  .NextBack
+  {
+    color: var(--color-white) !important;
+    background-color: var(--color-primario) !important;
+  }
+  

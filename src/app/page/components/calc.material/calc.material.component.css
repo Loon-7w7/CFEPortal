@@ -1,0 +1,98 @@
+
+/* fin header inicio de booy*/
+.bodyContainer
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;  
+}
+.SectionL
+{
+    height: 100%;
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.formSection
+{
+    border-right: 2px solid var(--color-secundario);
+}
+.Tittle
+{
+    margin-right: 40px;
+    padding: 10px;
+    background-color: var(--color-terciario);
+    height: auto;
+    border-left: 5px solid var(--color-primario);
+}
+.Tittle h4
+{
+    font-weight: bold;
+    color: var(--color-black);
+}
+.SectionR
+{
+    height: 100%;
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+.FormCalc
+{
+    margin: 10px 20px 10px 0px;
+    max-width: 500px;
+    padding: 20px;
+
+}
+.FormCalc
+{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+  .AddDataButton input[type="button"] {
+    background-color: var(--color-success) ;
+  }
+  
+  .AddDataButton input[type="button"]:hover {
+    background-color: var(--color-success-dark);
+  }
+.formSection  input[type="text"],
+input[type="email"],
+textarea {
+    width: 195px;
+}
+select
+{
+    width: 217px;
+}
+
+  /*diseño de tabla*/
+  .TableData {
+    border-collapse: collapse;
+    width: 100%;
+
+  }
+  
+  .TableData td,
+  .TableData th {
+    border: 1px solid var(--color-secundario);
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .TableData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--color-secundario);
+    color: var(--color-white-secundario);
+  }
+  
+  .TableData tr {
+    background-color: #ecf2ff;
+  }
+  
