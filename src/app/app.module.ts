@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from 'src/shared/components/header/header.component';
+import { CreateMaterailModalComponent } from 'src/shared/components/create-materail-modal/create-materail-modal.component';
 import { CalcMaterialComponent } from './page/components/calc.material/calc.material.component';
 import { DevicesComponent } from './page/components/devices/devices.component';
 import { ConsultationComponent } from './page/components/consultation/consultation.component';
@@ -15,7 +16,8 @@ import { provideToastr } from 'ngx-toastr';
     HeaderComponent,
     CalcMaterialComponent,
     DevicesComponent,
-    ConsultationComponent
+    ConsultationComponent,
+    CreateMaterailModalComponent
   ],
   imports: [
     BrowserModule,

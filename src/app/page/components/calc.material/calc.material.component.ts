@@ -13,6 +13,22 @@ export class CalcMaterialComponent {
   calcInfo: CalcInfoForm;
   showTableData = false;
   isFormDisabled = false;
+  TableDiveceList: any[] = [];
+  //datos de ejemplo
+  dispositivos: any[] = [
+    { id: 1, nombre: 'Dispositivo 1', clasificacion: 'baja tension' },
+    { id: 2, nombre: 'Dispositivo 2', clasificacion: 'alta tension' },
+    { id: 3, nombre: 'Dispositivo 3', clasificacion: 'baja tension' },
+    { id: 4, nombre: 'Dispositivo 4', clasificacion: 'alta tension' },
+    { id: 5, nombre: 'Dispositivo 5', clasificacion: 'baja tension' },
+    { id: 6, nombre: 'Dispositivo 6', clasificacion: 'alta tension' },
+    // ...otros dispositivos
+  ];
+  dispositivosBajaTension: any[];
+  dispositivosAltaTension: any[];
+  dispositivoSeleccionado = {};
+
+  
   constructor(private toastr: ToastrService) {
     this.calcInfo = {
       number: null,
@@ -23,6 +39,8 @@ export class CalcMaterialComponent {
       semiisolated: null,
       heavy: null
     };
+    this.dispositivosBajaTension = this.dispositivos.filter(dispositivo => dispositivo.clasificacion === 'baja tension');
+    this.dispositivosAltaTension = this.dispositivos.filter(dispositivo => dispositivo.clasificacion === 'alta tension');
   }
 
   onSubmit() {
@@ -74,5 +92,15 @@ export class CalcMaterialComponent {
       message += '-Pesado-'
     }
     return message;
+  }
+  addDevice(id: any)
+  {
+    let dispositivo = {};
+    this.TableDiveceList.push(this.dispositivos.find(element => element.id == id));
+    console.log(this.TableDiveceList);
+  }
+  deleteDivice(id:any)
+  {
+    this.TableDiveceList = this.TableDiveceList.filter(elemento => elemento.id !== id)
   }
 }

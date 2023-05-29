@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { CreateMaterailModalComponent } from 'src/shared/components/create-materail-modal/create-materail-modal.component';
 
 @Component({
   selector: 'cfe-devices',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class DevicesComponent {
 
+  @ViewChild(CreateMaterailModalComponent)formModal!: CreateMaterailModalComponent;
+  modalOpen: boolean = false;
+  openModal(): void {
+    this.modalOpen = true;
+  }
+  openFormModal() {
+    this.formModal.openModal();
+  }
+  handleFormSubmit() {
+    // Lógica para manejar el envío del formulario
+    console.log('Formulario enviado desde el componente principal');
+  }
+  closeModal(): void {
+    this.modalOpen = false;
+  }
 }
