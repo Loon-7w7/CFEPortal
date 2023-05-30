@@ -11,12 +11,15 @@
   </div>
   <div class="formlogin">
     <form>
+      <div class="formcontrols">
         <label for="username">Usuario:</label>
         <input type="text" id="username" name="username" required [(ngModel)]="formLogin.email">
+      </div>
+      <div class="formcontrols">
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" required [(ngModel)]="formLogin.passaword">
-
-        <input type="button" id="botonAgregar" name="add" value="Agregar datos" (click)="onSubmit()">
+      </div>
+        <input type="button" id="botonAgregar" name="add" value="Iniciar Secion" (click)="onSubmit()">
     </form>
   </div>
 </div>
