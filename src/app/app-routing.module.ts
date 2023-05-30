@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CalcMaterialComponent } from './page/components/calc.material/calc.material.component';
-import { DevicesComponent } from './page/components/devices/devices.component';
-import { ConsultationComponent } from './page/components/consultation/consultation.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
+
 
 const routes: Routes = [
-  { path: '',
-    redirectTo: '/CalcMaterial', 
-    pathMatch: 'full'
+  {
+    path:'home',
+    loadChildren: () => import('./page/Modules/home/home.module').then(m => m.HomeModule)
   },
   {
-    path:'CalcMaterial',
-    component: CalcMaterialComponent
+    path:'login',
+    loadChildren: () => import('./page/Modules/login/login.module').then(m => m.LoginModule)
   },
   {
-    path:'Devices',
-    component: DevicesComponent
-  },
-  {
-    path:'Consultation',
-    component: ConsultationComponent
+    path: '**',
+    redirectTo: 'home'
   }
 ];
 
