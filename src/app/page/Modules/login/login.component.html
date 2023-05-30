@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<div class="genralcontendeor">
+
+  <div class="contenedor" [style]="contenedorStyles">
+    <div class="imgcontainer">
+      <a href="https://www.cfe.mx/Pages/default.aspx" target="_blank">
+        <img src="assets/img/cfe.png" alt="Comisión Federal de Electricidad.">
+      </a>
+    </div>
+
+    <span *ngIf="isLoading" class="spinner"></span>
+  </div>
+  <div class="formlogin">
+    <form>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required [(ngModel)]="formLogin.email">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required [(ngModel)]="formLogin.passaword">
+
+        <input type="button" id="botonAgregar" name="add" value="Agregar datos" (click)="onSubmit()">
+    </form>
+  </div>
+</div>

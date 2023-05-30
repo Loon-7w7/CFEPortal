@@ -10,6 +10,6 @@ export class AppComponent implements OnInit {
   title = 'cfeproyect';
   constructor(private router: Router) {}
   ngOnInit() {
-
+    this.router.navigate(['/login']);
   }
 }
