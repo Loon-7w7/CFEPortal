@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginForm } from 'src/app/core/forms.models/loginForm';
+import { LoginService } from 'src/app/services/implementation/login-service';
 
 
 @Component({
@@ -12,22 +13,35 @@ export class LoginComponent implements OnInit {
   contenedorStyles: any = {};
   isLoading: boolean;
   formLogin: LoginForm;
-  constructor(private router: Router) 
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+    ) 
   {
     this.isLoading = true
     this.formLogin =
     {
       passaword: null,
-      email: null
+      user: null
     }
    }
 
   ngOnInit() {
+    debugger
+    var isLogin = this.loginService.isLogin();
+  
     setTimeout(() => {
       this.contenedorStyles = {
         width: '40%',
         position: 'relative'
       };
+      isLogin.subscribe(response =>
+        {
+          if(response)
+          {
+            this.router.navigate(['/home']);
+          }
+        });
       this.stopLoading()
     }, 5000);
   
@@ -41,6 +55,15 @@ export class LoginComponent implements OnInit {
   }
   onSubmit()
   {
-    this.router.navigate(['/home']);
+    
+    this.loginService.login(this.formLogin).subscribe(success => {
+      if (success) {
+        // Login exitoso, redirigir a la página principal o realizar acciones adicionales
+        this.router.navigate(['/home']);
+      } else {
+        // Login fallido, mostrar mensaje de error o realizar acciones adicionales
+      }
+    });
+    
   }
 }

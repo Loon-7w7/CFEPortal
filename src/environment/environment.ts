@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiBaseUrl: 'http://localhost:3000',
+    apiBaseUrl: 'https://localhost:7294/',
     Database:
     {
         host: "b4trsmfwrqxor9izl9en-mysql.services.clever-cloud.com",

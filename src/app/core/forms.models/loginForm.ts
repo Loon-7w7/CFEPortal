@@ -1,5 +1,5 @@
 export interface LoginForm {
-    email: string | null,
+    user: string | null,
     passaword: string | null
   }
   
