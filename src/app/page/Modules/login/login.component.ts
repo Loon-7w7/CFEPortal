@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    debugger
     var isLogin = this.loginService.isLogin();
   
     setTimeout(() => {
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
           }
         });
       this.stopLoading()
-    }, 5000);
+    }, 3000);
   
   }
   startLoading() {

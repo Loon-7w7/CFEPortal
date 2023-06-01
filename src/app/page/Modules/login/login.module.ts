@@ -5,7 +5,8 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from 'src/app/services/implementation/login-service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 
 
 
@@ -17,6 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [LoginService]
+  providers: [LoginService , {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true}]
 })
 export class LoginModule { }

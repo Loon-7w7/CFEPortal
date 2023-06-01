@@ -11,7 +11,7 @@ export class LoginService implements ILoginServices {
     isLogin(): Observable<boolean> {
         var token = localStorage.getItem("token");
         if (token != null && token != "") {
-            const headers = new HttpHeaders().set('Authorization', "Bearer " + token);
+            const headers = new HttpHeaders().set('Content-Type', 'application/json');
             return this.http.post<boolean>(this.loginUrl+"/Validate", { headers })
                 .pipe(
                     map((reponse: boolean) => {
