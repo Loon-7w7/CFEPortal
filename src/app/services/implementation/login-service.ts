@@ -8,6 +8,9 @@ import { Injectable } from "@angular/core";
 export class LoginService implements ILoginServices {
     private loginUrl = 'api/Auth'
     constructor(private http: HttpClient) { }
+    logout(): void {
+        localStorage.removeItem('token');
+    }
     isLogin(): Observable<boolean> {
         var token = localStorage.getItem("token");
         if (token != null && token != "") {

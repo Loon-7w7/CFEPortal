@@ -4,10 +4,16 @@
     </a>
 </div>
 <nav class="navMenu">
-    <a class="navLink" href="home/calmat">Cál. Material</a>
-    <a class="navLink" href="home/consultation">Consultas</a>
-    <a class="navLink" href="home/device">Dispositivos</a>
+    <a class="navLink" (click)="NavegateTo('/home/calmat')">Cál. Material</a>
+    <a class="navLink" (click)="NavegateTo('/home/consultation')">Consultas</a>
+    <a class="navLink" (click)="NavegateTo('/home/device')">Dispositivos</a>
+    <a class="navLink" (click)="NavegateTo('/home/material')">Material</a>
 </nav>
-<div class="buttonHeader">
-    <a href="#">Carpeta de Archivos</a>
+<div class="optios">
+    <div class="buttonHeader">
+        <a href="#">Carpeta de Archivos</a>
+    </div>
+    <div class="closeSecion">
+        <a (click)="logout()" > <img src="assets/img/CloseSeccionIcon.png" alt=""></a>
+    </div>
 </div>

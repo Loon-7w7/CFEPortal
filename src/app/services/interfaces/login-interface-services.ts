@@ -8,4 +8,5 @@ export interface ILoginServices
 {
     login(formcontrols: LoginForm): Observable<boolean>;
     isLogin():Observable<boolean>;
+    logout():void;
 }

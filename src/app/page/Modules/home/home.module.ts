@@ -9,9 +9,8 @@ import { ConsultationComponent } from './pages/consultation/consultation.compone
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/shared/components/header/header.component';
 import { CreateMaterailModalComponent } from 'src/shared/components/create-materail-modal/create-materail-modal.component';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-import { provideToastr } from 'ngx-toastr';
-import { BrowserModule } from '@angular/platform-browser';
+import { LoginService } from 'src/app/services/implementation/login-service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
-  providers:[]
+  providers:[LoginService]
 })
 export class HomeModule { }
