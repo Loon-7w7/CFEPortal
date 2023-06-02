@@ -10,7 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/shared/components/header/header.component';
 import { CreateMaterailModalComponent } from 'src/shared/components/create-materail-modal/create-materail-modal.component';
 import { LoginService } from 'src/app/services/implementation/login-service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MaterialComponent } from './pages/material/material.component';
+import { MaterialServices } from 'src/app/services/implementation/Material-sevices';
+import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -20,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     DevicesComponent,
     ConsultationComponent,
     HeaderComponent,
+    MaterialComponent,
     CreateMaterailModalComponent
   ],
   imports: [
@@ -28,6 +32,6 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers:[LoginService]
+  providers:[LoginService,MaterialServices,{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true}]
 })
 export class HomeModule { }

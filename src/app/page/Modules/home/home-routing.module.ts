@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { CalcMaterialComponent } from './pages/calc.material/calc.material.component';
 import { DevicesComponent } from './pages/devices/devices.component';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
+import { MaterialComponent } from './pages/material/material.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,9 @@ const routes: Routes = [
       },
       {
         path:'consultation', component: ConsultationComponent
+      },
+      {
+        path:'material', component: MaterialComponent
       },
       {
         path: '', redirectTo: 'calmat', pathMatch: 'full'

@@ -1,0 +1,49 @@
+.MaterialContainer
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/*diseño de tabla*/
+.tableContainer
+{
+  width: 80%;
+}
+.TableData {
+    border-collapse: collapse;
+    width: 100%;
+
+  }
+  
+  .TableData td,
+  .TableData th {
+    border: 1px solid var(--color-secundario);
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .TableData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--color-secundario);
+    color: var(--color-white-secundario);
+  }
+  
+  .TableData tr {
+    background-color: #ecf2ff;
+  }
+  .addButtonMateria
+  {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+  } 
+  .addButtonMateria input
+  {
+    background-color: var(--color-success);
+  }
+  .addButtonMateria input:hover
+  {
+    background-color: var(--color-success-dark);
+  }
