@@ -15,6 +15,7 @@ import { MaterialComponent } from './pages/material/material.component';
 import { MaterialServices } from 'src/app/services/implementation/Material-sevices';
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 import { SpinnerComponent } from 'src/shared/components/spinner/spinner.component';
+import { ConfirmModalComponent } from 'src/shared/components/confirm-modal/confirm-modal.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SpinnerComponent } from 'src/shared/components/spinner/spinner.componen
     HeaderComponent,
     MaterialComponent,
     CreateMaterailModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ConfirmModalComponent
   ],
   imports: [
     CommonModule,

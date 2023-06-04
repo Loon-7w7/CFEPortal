@@ -120,9 +120,17 @@ input[type="button"] {
   {
     background-color: var(--color-delete) !important; 
   }
+  .Deletebutton:hover
+  {
+    background-color: rgb(158, 40, 40) !important;
+  }
   .UpdateButton
   {
     background-color: var(--color-hover) !important; 
+  }
+  .UpdateButton:hover
+  {
+    background-color: rgb(199, 196, 0) !important;
   }
   .successButton
   {

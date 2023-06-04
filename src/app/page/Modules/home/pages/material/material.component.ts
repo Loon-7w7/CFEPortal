@@ -17,6 +17,8 @@ export class MaterialComponent implements OnInit {
   materials: Material[] = [];
   IsModalShow: boolean = false
   isLoading: boolean = false;
+  showConfirmation = false;
+  idDelete: string ='';
   constructor(private materialServices: MaterialServices
     , private toastr: ToastrService) { }
 
@@ -68,8 +70,17 @@ export class MaterialComponent implements OnInit {
           this.toastr.error('Se produjo un error', 'Error')
         }
         this.isLoading = false;
+        this.idDelete =''
+        this.cancelDelete()
       }
     );
   }
-
+  cancelDelete() {
+    this.showConfirmation = false;
+    this.idDelete =''
+  }
+  showConfirmationModal(id:string) {
+    this.idDelete = id;
+    this.showConfirmation = true;
+  }
 }
