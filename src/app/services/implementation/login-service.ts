@@ -1,11 +1,10 @@
 import { Observable, catchError, map, of } from "rxjs";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginForm } from "src/app/core/forms.models/loginForm";
-import { ILoginServices } from "../interfaces/login-interface-services";
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class LoginService implements ILoginServices {
+export class LoginService {
     private loginUrl = 'api/Auth'
     constructor(private http: HttpClient) { }
     logout(): void {
