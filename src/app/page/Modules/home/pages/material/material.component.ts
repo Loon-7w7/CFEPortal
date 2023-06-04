@@ -16,6 +16,7 @@ export class MaterialComponent implements OnInit {
   materialsasyng!: Observable<Material[]>;
   materials: Material[] = [];
   IsModalShow: boolean = false
+  isLoading: boolean = false;
   constructor(private materialServices: MaterialServices
     ,private toastr: ToastrService) { }
 
@@ -24,10 +25,12 @@ export class MaterialComponent implements OnInit {
   }
   getMaterials():void
   {
+    this.isLoading = true;
     this.materialsasyng = this.materialServices.getMaterials()
     this.materialsasyng.subscribe(response =>
       {
-         this.materials = response;
+         this.materials = response.sort((a, b) => a.code - b.code);
+         this.isLoading = false;
       });
   }
   showModal(isShow:boolean):void
@@ -36,6 +39,7 @@ export class MaterialComponent implements OnInit {
   }
   createMateria(datos: CreateMaterrialFrom):void
   {
+    this.isLoading = true;
     this.materialServices.addMateria(datos).subscribe
     (
       reponse => 
@@ -49,6 +53,7 @@ export class MaterialComponent implements OnInit {
         else
         {
           this.toastr.error('Se produjo un error','Error')
+          this.isLoading = false;
         }
       }
     );

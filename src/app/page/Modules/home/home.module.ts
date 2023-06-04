@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MaterialComponent } from './pages/material/material.component';
 import { MaterialServices } from 'src/app/services/implementation/Material-sevices';
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
+import { SpinnerComponent } from 'src/shared/components/spinner/spinner.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
     ConsultationComponent,
     HeaderComponent,
     MaterialComponent,
-    CreateMaterailModalComponent
+    CreateMaterailModalComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
