@@ -1,6 +1,6 @@
 import { Observable, catchError, map, of } from "rxjs";
 import { Material } from "src/app/core/models/Material.model";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { CreateMaterrialFrom } from "src/app/core/forms.models/CreateMaterial";
 
@@ -23,12 +23,29 @@ export class MaterialServices{
     addMateria(datos:CreateMaterrialFrom):Observable<boolean>
     {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this.http.post<any>(this.loginUrl, datos, {headers})
+        return this.http.post(this.loginUrl+'/create', datos, {headers})
         .pipe(
             map((reponse: any) => {
+                console.log(reponse);
+                if(reponse.status == 200){
                     return true;
+                }
+                else
+                {
+                    return false;
+                }
             }),
-            catchError(() => of(false))
+            catchError((error: HttpErrorResponse) => 
+            {
+               if(error.status == 200)
+               {
+                return of(true)
+               }
+               else
+               {
+                return of(false)
+               }
+            })
         );
     }
 }

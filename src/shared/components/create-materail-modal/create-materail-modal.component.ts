@@ -35,6 +35,7 @@ export class CreateMaterailModalComponent {
         && this.formulario.unit != null
         && this.formulario.unit != 0) {
       const datosFormulario = this.formulario;
+      datosFormulario.unit = Number(this.formulario.unit);
       this.guardarClick.emit(datosFormulario);
       this.ResetFomulario();
     }

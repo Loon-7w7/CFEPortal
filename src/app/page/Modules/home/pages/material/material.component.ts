@@ -4,6 +4,7 @@ import { Material } from 'src/app/core/models/Material.model';
 import { MaterialServices } from 'src/app/services/implementation/Material-sevices';
 import { NameUnit } from 'src/app/core/emuns/unitEnum'
 import { CreateMaterrialFrom } from 'src/app/core/forms.models/CreateMaterial';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-material',
@@ -15,9 +16,14 @@ export class MaterialComponent implements OnInit {
   materialsasyng!: Observable<Material[]>;
   materials: Material[] = [];
   IsModalShow: boolean = false
-  constructor(private materialServices: MaterialServices) { }
+  constructor(private materialServices: MaterialServices
+    ,private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.getMaterials();
+  }
+  getMaterials():void
+  {
     this.materialsasyng = this.materialServices.getMaterials()
     this.materialsasyng.subscribe(response =>
       {
@@ -30,8 +36,22 @@ export class MaterialComponent implements OnInit {
   }
   createMateria(datos: CreateMaterrialFrom):void
   {
-    console.log(datos);
-    this.IsModalShow = false;
+    this.materialServices.addMateria(datos).subscribe
+    (
+      reponse => 
+      {
+        if(reponse)
+        {
+          this.toastr.success('Se creo correctamente el material','operacion exitosa');
+          this.IsModalShow = false;
+          this.getMaterials();
+        }
+        else
+        {
+          this.toastr.error('Se produjo un error','Error')
+        }
+      }
+    );
   }
 
 }
