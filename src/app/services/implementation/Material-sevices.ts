@@ -46,7 +46,7 @@ export class MaterialServices {
     delete(id: string):Observable<boolean>
     {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this.http.delete(this.loginUrl+"/Delete"+id, {headers})
+        return this.http.delete(this.loginUrl+"/Delete/"+id, {headers})
             .pipe(
                 map((Response: any) => 
                 {

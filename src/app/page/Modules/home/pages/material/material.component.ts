@@ -18,43 +18,56 @@ export class MaterialComponent implements OnInit {
   IsModalShow: boolean = false
   isLoading: boolean = false;
   constructor(private materialServices: MaterialServices
-    ,private toastr: ToastrService) { }
+    , private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getMaterials();
   }
-  getMaterials():void
-  {
+  getMaterials(): void {
     this.isLoading = true;
     this.materialsasyng = this.materialServices.getMaterials()
-    this.materialsasyng.subscribe(response =>
-      {
-         this.materials = response.sort((a, b) => a.code - b.code);
-         this.isLoading = false;
-      });
+    this.materialsasyng.subscribe(response => {
+      this.materials = response.sort((a, b) => a.code - b.code);
+      this.isLoading = false;
+    });
   }
-  showModal(isShow:boolean):void
-  {
+  showModal(isShow: boolean): void {
     this.IsModalShow = isShow;
   }
-  createMateria(datos: CreateMaterrialFrom):void
-  {
+  createMateria(datos: CreateMaterrialFrom): void {
     this.isLoading = true;
     this.materialServices.addMateria(datos).subscribe
-    (
-      reponse => 
+      (
+        reponse => {
+          if (reponse) {
+            this.toastr.success('Se creo correctamente el material', 'operacion exitosa');
+            this.IsModalShow = false;
+            this.getMaterials();
+          }
+          else {
+            this.toastr.error('Se produjo un error', 'Error')
+            this.isLoading = false;
+          }
+        }
+      );
+  }
+  deleteMateria(id:string):void
+  {
+    this.isLoading = true;
+    this.materialServices.delete(id)
+    .subscribe(
+      response => 
       {
-        if(reponse)
+        if(response)
         {
-          this.toastr.success('Se creo correctamente el material','operacion exitosa');
-          this.IsModalShow = false;
+          this.toastr.success('Se Elimino correctamente el material', 'operacion exitosa');
           this.getMaterials();
         }
         else
         {
-          this.toastr.error('Se produjo un error','Error')
-          this.isLoading = false;
+          this.toastr.error('Se produjo un error', 'Error')
         }
+        this.isLoading = false;
       }
     );
   }

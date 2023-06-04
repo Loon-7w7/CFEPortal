@@ -25,7 +25,10 @@
           <td>{{item.hierarchy}}</td>
           <td>{{getNameUnit.get(item.unit)}}</td>
           <td>${{item.unirPrice}}</td>
-          <td class="ButtonsActions" ><input type="button" class="UpdateButton" value="Editar"> <input class="Deletebutton" type="button" value="Eliminar" ></td>
+          <td class="ButtonsActions" >
+            <input type="button" class="UpdateButton" value="Editar"> 
+            <input class="Deletebutton" type="button" value="Eliminar" (click)="deleteMateria(item.id)" >
+          </td>
         </tr>
       </tbody>
     </table>
