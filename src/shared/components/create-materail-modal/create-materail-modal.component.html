@@ -1,23 +1,43 @@
-<div class="modal" [ngClass]="{ 'open': showModal }">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal de Formulario</h5>
-                <button type="button" class="close" (click)="closeModal()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form (submit)="submitForm()">
-                    <ng-content select="[modal-body]"></ng-content>
-                    <div class="modal-actions">
-                        <input type="button" class="successButton modalbutton" (click)="submitForm()" value="Guardar">
-                        <input type="button" class="Deletebutton modalbutton" (click)="closeModal()" value="Cancelar">
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="modal">
+    <div class="modal-content">
+      <h2>Crear Material</h2>
+      <form >
+        <table>
+            <tr>
+                <td><label for="code">Codigo</label></td>
+                <td><input type="number" name="code" [(ngModel)]="formulario.code"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Nombre</label></td>
+                <td><input type="text" name="name" [(ngModel)]="formulario.name"></td>
+            </tr>
+            <tr>
+                <td><label for="area">Area</label></td>
+                <td><input type="text" name="area" [(ngModel)]="formulario.area"></td>
+            </tr>
+            <tr>
+                <td><label for="hierarchy">Gerarquia</label></td>
+                <td><input type="text" name="hierarchy" [(ngModel)]="formulario.hierarchy"></td>
+            </tr>
+            <tr>
+                <td><label for="unit">Unidad de medida</label></td>
+                <td><select name="unit" [(ngModel)]="formulario.unit">
+                    <option disabled selected="" [value]="null">Seleccione una opción</option>
+                    <option *ngFor="let item of units" [value]="item">
+                        {{getnames.get(item)}}
+                    </option>
+                </select> </td>
+            </tr>
+            <tr>
+                <td><label for="unirPrice">Precio por unidad</label></td>
+                <td><input type="number" name="unirPrice" [(ngModel)]="formulario.unirPrice"></td>
+            </tr>
+        </table>
+      </form>
+      <div class="modal-buttons">
+        <button (click)="cancelar()">Cancelar</button>
+        <button (click)="guardar()">Guardar</button>
+      </div>
     </div>
-</div>
-
-<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
+  </div>
+  

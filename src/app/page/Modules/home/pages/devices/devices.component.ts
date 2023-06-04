@@ -14,7 +14,7 @@ export class DevicesComponent {
     this.modalOpen = true;
   }
   openFormModal() {
-    this.formModal.openModal();
+
   }
   handleFormSubmit() {
     // Lógica para manejar el envío del formulario

@@ -134,29 +134,3 @@
     </div>
 </div>
 </div>
-<button (click)="openFormModal()" >Abrir Modal</button>
-<cfe-create-materail-modal (formSubmitted)="handleFormSubmit()">
-    <div modal-title>
-        <h2>Título del Modal</h2>
-      </div>
-      <div modal-body>
-        <table>
-                <tr>
-                    <td>
-                        <label>Nombre:</label>
-                    </td>
-                    <td>
-                        <input type="text" name="name" ngModel required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>Correo electrónico:</label>
-                    </td>
-                    <td>
-                        <input type="email" name="email" ngModel required>
-                    </td>
-                </tr>
-        </table>
-      </div>
-</cfe-create-materail-modal>
