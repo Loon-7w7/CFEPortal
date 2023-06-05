@@ -29,7 +29,10 @@ export class MaterialComponent implements OnInit {
     this.isLoading = true;
     this.materialsasyng = this.materialServices.getMaterials()
     this.materialsasyng.subscribe(response => {
-      this.materials = response.sort((a, b) => a.code - b.code);
+      if(response.length != 0)
+      {
+        this.materials = response.sort((a, b) => a.code - b.code);
+      }
       this.isLoading = false;
     });
   }
