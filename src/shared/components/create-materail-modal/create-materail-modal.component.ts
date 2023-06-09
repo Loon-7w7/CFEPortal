@@ -21,8 +21,6 @@ export class CreateMaterailModalComponent {
     {
       code: 0,
       name:'',
-      area:'',
-      hierarchy:'',
       unit:null,
       unirPrice:0
     }
@@ -30,10 +28,8 @@ export class CreateMaterailModalComponent {
   guardar() {
     if (this.formulario.code != 0 
         && this.formulario.name != ''
-        && this.formulario.area !=''
-        && this.formulario. hierarchy !=''
         && this.formulario.unit != null
-        && this.formulario.unit != 0) {
+        && this.formulario.unirPrice != 0) {
       const datosFormulario = this.formulario;
       datosFormulario.unit = Number(this.formulario.unit);
       this.guardarClick.emit(datosFormulario);
@@ -54,8 +50,6 @@ export class CreateMaterailModalComponent {
     {
       code: 0,
       name:'',
-      area:'',
-      hierarchy:'',
       unit:null,
       unirPrice:0
     }

@@ -5,8 +5,6 @@ export interface Material
 {
     code: number,
     name: string,
-    area: string,
-    hierarchy: string,
     unit: Unit,
     unirPrice: number
     id:string

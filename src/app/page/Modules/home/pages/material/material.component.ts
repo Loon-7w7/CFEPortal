@@ -19,8 +19,7 @@ export class MaterialComponent implements OnInit {
   isLoading: boolean = false;
   showConfirmation = false;
   idDelete: string ='';
-  constructor(private materialServices: MaterialServices
-    , private toastr: ToastrService) { }
+  constructor(private materialServices: MaterialServices) { }
 
   ngOnInit() {
     this.getMaterials();
@@ -45,12 +44,10 @@ export class MaterialComponent implements OnInit {
       (
         reponse => {
           if (reponse) {
-            this.toastr.success('Se creo correctamente el material', 'operacion exitosa');
             this.IsModalShow = false;
             this.getMaterials();
           }
           else {
-            this.toastr.error('Se produjo un error', 'Error')
             this.isLoading = false;
           }
         }
@@ -65,12 +62,7 @@ export class MaterialComponent implements OnInit {
       {
         if(response)
         {
-          this.toastr.success('Se Elimino correctamente el material', 'operacion exitosa');
           this.getMaterials();
-        }
-        else
-        {
-          this.toastr.error('Se produjo un error', 'Error')
         }
         this.isLoading = false;
         this.idDelete =''

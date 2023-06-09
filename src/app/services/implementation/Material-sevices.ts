@@ -1,13 +1,15 @@
 import { Observable, catchError, map, of } from "rxjs";
 import { Material } from "src/app/core/models/Material.model";
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponseBase } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { CreateMaterrialFrom } from "src/app/core/forms.models/CreateMaterial";
+import { GeneralResponse } from "src/app/core/models/GenralResponseEnp.model";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable()
 export class MaterialServices {
     private loginUrl = 'api/Material'
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private toastr: ToastrService) { }
     getMaterials(): Observable<Material[]> {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this.http.get<Material[]>(this.loginUrl, { headers })
@@ -22,43 +24,44 @@ export class MaterialServices {
     }
     addMateria(datos: CreateMaterrialFrom): Observable<boolean> {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this.http.post(this.loginUrl + '/create', datos, { headers })
+        return this.http.post<GeneralResponse>(this.loginUrl + '/create', datos, { headers })
             .pipe(
-                map((reponse: any) => {
-                    console.log(reponse);
-                    if (reponse.status == 200) {
+                map((reponse: GeneralResponse) => {
+                    if (reponse.success) {
+                        this.toastr.success(reponse.message,"Operacion exitosa");
                         return true;
                     }
                     else {
+                        this.toastr.error(reponse.message,"Error");
                         return false;
                     }
                 }),
                 catchError((error: HttpErrorResponse) => {
-                    if (error.status == 200) {
-                        return of(true)
-                    }
-                    else {
-                        return of(false)
-                    }
+                    
+                    this.toastr.error(error.error.error,"Error")
+                    return of(false)
                 })
             );
     }
-    delete(id: string):Observable<boolean>
-    {
+    delete(id: string): Observable<boolean> {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this.http.delete(this.loginUrl+"/Delete/"+id, {headers})
+        return this.http.delete<GeneralResponse>(this.loginUrl + "/Delete/" + id, { headers })
             .pipe(
-                map((Response: any) => 
-                {
-                    return true;
+                map((reponse: GeneralResponse) => {
+                    if (reponse.success) {
+                        this.toastr.success(reponse.message,"Operacion exitosa");
+                        return true
+                    }
+                    else
+                    {
+                        this.toastr.error(reponse.message,"Error");
+                        return false
+                    }
+                    
                 }),
                 catchError((error: HttpErrorResponse) => {
-                    if (error.status == 200) {
-                        return of(true)
-                    }
-                    else {
-                        return of(false)
-                    }
+                    this.toastr.error(error.error.error,"Error")
+                    return of(false)
                 })
             )
     }
