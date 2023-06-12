@@ -1,9 +1,9 @@
 <div class="Spin" *ngIf="isLoading">
     <cfe-spinner></cfe-spinner>
-  </div>
+</div>
 <div class="bodyContent">
     <div class="SectionL" [style]="contenedorStyles1">
-        <div class="contenedorL"[style]="contenedorStyles2">
+        <div class="contenedorL" [style]="contenedorStyles2">
             <div class="Tittle">
                 <h4>Información</h4>
                 <p>Seleccione los parámetros correspondientes al dispositivo y luego presione aceptar.</p>
@@ -12,60 +12,72 @@
                 <table>
                     <tr>
                         <td>
-                            <label>Voltaje: </label>
+                            <label for="nombre">Nombre del dispositivo: </label>
+                        </td>
+                        <td><input id="nombre" type="text" name="nombre" [(ngModel)]="formDevices.name" [disabled]="isdisable"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="voltaje">Voltaje: </label>
                         </td>
                         <td>
-                            <select name="voltaje" style="width: 206px;">
-                                <option disabled selected="">Seleccione el voltaje</option>
-                                <option>13</option>
-                                <option>33</option>
+                            <select name="voltaje" style="width: 206px;" [(ngModel)]="formDevices.voltage" [disabled]="isdisable">
+                                <option disabled selected="" [value]="0">Seleccione el voltaje</option>
+                                <option [value]="13">13</option>
+                                <option [value]="33">33</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Semiaislado: </label>
+                            <label for="semiAis">Semiaislado: </label>
                         </td>
                         <td>
-                            <select name="semiAis">
-                                <option disabled selected="">Seleccione una opción</option>
-                                <option>Si</option>
-                                <option>No</option>
+                            <select name="semiAis" [(ngModel)]="formDevices.isSemiInsulated" [disabled]="isdisable">
+                                <option disabled selected="" [value]="null">Seleccione una opción</option>
+                                <option [value]="true">Si</option>
+                                <option [value]="false">No</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Pesado: </label>
+                            <label for="pesado">Pesado: </label>
                         </td>
                         <td>
-                            <select name="pesado">
-                                <option disabled selected="">Seleccione una opción</option>
-                                <option>Si</option>
-                                <option>No</option>
+                            <select name="pesado" [(ngModel)]="formDevices.isHeavy" [disabled]="isdisable">
+                                <option disabled selected="" [value]="null">Seleccione una opción</option>
+                                <option [value]="true">Si</option>
+                                <option [value]="false">No</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td><input type="button" id="botonAgregar" name="add" value="Aceptar" (click)="addData()"
-                                class="successButton"></td>
+                        <td><input type="button" id="botonAgregar" name="add" value="Aceptar" (click)="addMatrial()"class="successButton" [disabled]="isdisable"></td>
+                        <td><input type="button" id="botonAgregar" name="add" value="editar" (click)="editarform()"class="successButton"[disabled]="!isdisable"></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="selectmat">Material: </label>
+                        </td>
+                        <td><select name="selectmat" id="" [disabled]="!isdisable" [(ngModel)]="selectMat.id" (ngModelChange)="onSelectorChange()">
+                                <option disabled selected="" value="">Seleccione una opción</option>
+                                <option *ngFor="let item of materials" [value]="item.id">{{item.code}}-{{item.name}}</option>
+                            </select></td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Nombre del dispositivo: </label>
+                            <label for="amout">Cantidad de material: </label>
                         </td>
-                        <td><input id="nombre" type="text" name="nombre"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Material: </label>
-                        </td>
-                        <td><input id="nombre" type="text" name="nombre"></td>
+                        <td><input id="amout" type="number" name="amout" [disabled]="!isdisable" [(ngModel)]="selectMat.amount"> </td>
+                        <td><span>{{getNameUnit.get(unitMat)}}</span></td>
                     </tr>
                     <tr>
                         <td><input type="button" id="botonAgregar" name="add" value="Agregar otro material"
-                                onclick="addData();" class="successButton"></td>
-                        <td><input class="successButton" type="button" value="Finalizar"></td>
+                                (click)="addMat()" class="successButton"></td>
+                                <td><input class="successButton" type="button" value="Restaurar" (click)="Reset()"></td>
+                        <td><input class="successButton" type="button" value="Finalizar" (click)="crearMar()"></td>
                     </tr>
 
                 </table>
@@ -111,6 +123,7 @@
             <br>
         </div>
         <div class="tablacrear" *ngIf="iscreate">
+            <table class="TableData">
             <thead>
                 <th>Nombre del dispositivo</th>
                 <th>Voltaje</th>
@@ -119,14 +132,25 @@
                 <th>Cantidad de material</th>
             </thead>
             <tbody>
-                <tr *ngFor="let item of devices">
-                    <td>{{item.name}}</td>
-                    <td>{{item.voltage}}</td>
-                    <td>{{item.isHeavy}}</td>
-                    <td>{{item.isSemiInsulated}}</td>
-                    <td>{{item.materials.length}}</td>
+                <tr>
+                    <td>{{formDevices.name}}</td>
+                    <td>{{formDevices.voltage}}</td>
+                    <td>{{formDevices.isHeavy}}</td>
+                    <td>{{formDevices.isSemiInsulated}}</td>
+                    <td>{{formDevices.materials.length}}</td>
                 </tr>
             </tbody>
+            <thead>
+                <th colspan="3">Material</th>
+                <th colspan="2">Cantidad</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of amoutMat">
+                    <td colspan="3">{{item.material.code}}-{{item.material.name}}</td>
+                    <td colspan="2">{{item.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
         </div>
     </div>
 </div>

@@ -4,7 +4,8 @@ export enum Unit
     M = 1,
     KG = 2,
     JGO = 3,
-    L = 4
+    L = 4,
+    vacio = 5
 }
 export const NameUnit = new Map<number, string>
 (
@@ -13,7 +14,8 @@ export const NameUnit = new Map<number, string>
         [Unit.M, "Metro"],
         [Unit.KG, "Kilograno"],
         [Unit.JGO,"JGO"],
-        [Unit.L, "Litro"]
+        [Unit.L, "Litro"],
+        [Unit.vacio, ""]
     ]
 );
 export const NumUnit = new Map<string,number>
