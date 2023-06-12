@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           }
         });
       this.stopLoading()
-    }, 3000);
+    }, 1000);
   
   }
   startLoading() {
@@ -54,10 +54,11 @@ export class LoginComponent implements OnInit {
   }
   onSubmit()
   {
-    
+    this.startLoading()
     this.loginService.login(this.formLogin).subscribe(success => {
       if (success) {
         // Login exitoso, redirigir a la página principal o realizar acciones adicionales
+        this.stopLoading();
         this.router.navigate(['/home']);
       } else {
         // Login fallido, mostrar mensaje de error o realizar acciones adicionales

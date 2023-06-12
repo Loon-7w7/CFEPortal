@@ -23,29 +23,50 @@
 }
 .SectionL
 {
+    overflow: hidden; 
     padding: 15px;
-    width: 45%;
-    height: 100%;
-    border-right: 2px solid var(--color-secundario);
+    width: 0;
+    height: 80vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    transition: all 0.5s ease; 
+ 
+}
+.contenedorL
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  position: relative;
+  width: 0;
+  transition: all 0.5s ease; 
 }
 .SectionR
 {
-    padding-top: 70px;
-    padding-left: 70px;
-    width: 55%;
+    padding-top: 25px;
+    width: 70%;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 /*diseño de tabla*/
 .TableData {
     border-collapse: collapse;
-    width: 100%;
+    width: 900px;
 
   }
-  
+  .Eltutulo
+  {
+    margin-bottom: 50px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
   .TableData td,
   .TableData th {
     border: 1px solid var(--color-secundario);

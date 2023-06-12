@@ -16,6 +16,7 @@ import { MaterialServices } from 'src/app/services/implementation/Material-sevic
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 import { SpinnerComponent } from 'src/shared/components/spinner/spinner.component';
 import { ConfirmModalComponent } from 'src/shared/components/confirm-modal/confirm-modal.component';
+import { DevicesSevice } from 'src/app/services/implementation/Devices-service';
 
 
 @NgModule({
@@ -36,6 +37,6 @@ import { ConfirmModalComponent } from 'src/shared/components/confirm-modal/confi
     FormsModule,
     HttpClientModule
   ],
-  providers:[LoginService,MaterialServices,{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true}]
+  providers:[LoginService,MaterialServices,DevicesSevice,{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true}]
 })
 export class HomeModule { }
