@@ -3,6 +3,10 @@
   <hr>
   <div class="addButtonMateria">
     <input type="button" id="botonAgregar" name="add" value="Agregar datos" (click)="showModal(true)">
+    <div class="file-input-wrapper">
+      <input type="file" (change)="cargarArchivo($event)" accept=".xlsx" placeholder="Cargar Excel">
+      <label class="file-input-label"></label>
+    </div>
   </div>
   <div class="tableContainer">
     <table class="TableData">
@@ -32,7 +36,10 @@
       (guardarClick)="createMateria($event)"></cfe-create-materail-modal>
   </div>
   <div class="modalShow" *ngIf="showConfirmation">
-    <cfe-confirm-modal (cancelEvent)="cancelDelete()" (confirmEvent)="deleteMateria(idDelete)"></cfe-confirm-modal>
+    <cfe-confirm-modal (cancelEvent)="cancelDelete()" (confirmEvent)="deleteMateria(idDelete)" mesagge="¿Estás seguro de realizar eliminar este materia?"></cfe-confirm-modal>
+  </div>
+  <div class="modalShow" *ngIf="ExcelCarga">
+    <cfe-confirm-modal (cancelEvent)="cancelDelete()" (confirmEvent)="createMultiMateria(MatExcel)" [mesagge]="'¿Quieres agregar '+MatExcel.length+ ' Materiales?' "></cfe-confirm-modal>
   </div>
   <div class="Spin" *ngIf="isLoading">
     <cfe-spinner></cfe-spinner>

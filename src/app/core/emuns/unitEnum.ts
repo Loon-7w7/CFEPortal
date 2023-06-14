@@ -28,3 +28,13 @@ export const NumUnit = new Map<string,number>
         [ "Litro",Unit.L]
     ]
 );
+export const NumUnitAbre = new Map<string,number>
+(
+    [
+        ["PZA", Unit.PZA],
+        ["M", Unit.M ],
+        [ "NG",Unit.KG],
+        ["JGO",Unit.JGO],
+        [ "L",Unit.L]
+    ]
+);

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'cfe-confirm-modal',
@@ -8,6 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class ConfirmModalComponent {
   @Output() confirmEvent = new EventEmitter<void>();
   @Output() cancelEvent = new EventEmitter<void>();
+  @Input() mesagge: string = '';
 
   confirm() {
     this.confirmEvent.emit();

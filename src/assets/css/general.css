@@ -140,3 +140,27 @@ input[type="button"] {
   {
     background-color: var(--color-success-dark) !important;
   }
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: #888888 #f5f5f5;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  body.fade-out {
+    opacity: 0;
+  }
+  
+  /* Personaliza la apariencia de la barra de desplazamiento */
+  body::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--color-secundario);
+    border-radius: 4px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: var(--color-white-secundario);
+  }
+  

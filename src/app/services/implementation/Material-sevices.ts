@@ -43,6 +43,27 @@ export class MaterialServices {
                 })
             );
     }
+    addMultiMateria(datos: CreateMaterrialFrom[]): Observable<boolean> {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.post<GeneralResponse>(this.loginUrl + '/CreateMulti', datos, { headers })
+            .pipe(
+                map((reponse: GeneralResponse) => {
+                    if (reponse.success) {
+                        this.toastr.success(reponse.message,"Operacion exitosa");
+                        return true;
+                    }
+                    else {
+                        this.toastr.error(reponse.message,"Error");
+                        return false;
+                    }
+                }),
+                catchError((error: HttpErrorResponse) => {
+                    
+                    this.toastr.error(error.error.error,"Error")
+                    return of(false)
+                })
+            );
+    }
     delete(id: string): Observable<boolean> {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this.http.delete<GeneralResponse>(this.loginUrl + "/Delete/" + id, { headers })
